@@ -5,14 +5,16 @@
  */
 package interfaces;
 
-import presetador.Controlador;
+import java.util.ArrayList;
+import modelo.Ciudad;
+import presetador.PresentadorInicio;
 
 /**
  *
  * @author Carlos
  */
 public interface IInicio {
-    public void MostrarCrearPaquete();
+    public void MostrarCrearPaquete(ArrayList<Ciudad> ciudades);
     public void MostrarListarPaquete();
     public void MostrarCrearSalida();
     public void MostrarListarSalida();

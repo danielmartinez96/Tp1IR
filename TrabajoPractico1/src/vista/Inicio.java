@@ -6,7 +6,9 @@
 package vista;
 
 import interfaces.IInicio;
-import presetador.Controlador;
+import java.util.ArrayList;
+import modelo.Ciudad;
+import presetador.PresentadorInicio;
 
 /**
  *
@@ -19,8 +21,9 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
      */
     public Inicio() {
         initComponents();
+        this.setControlador(new PresentadorInicio(this));
          
-        this.show();
+        
     }
 
     /**
@@ -34,47 +37,47 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        nuevoPaquete = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        listarPaquete = new javax.swing.JMenuItem();
+        menu1 = new javax.swing.JMenu();
+        itemNuevoPaquete = new javax.swing.JMenuItem();
+        itemListarPaquete = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        nuevoSalida = new javax.swing.JMenuItem();
-        listarSalida = new javax.swing.JMenuItem();
+        itemNuevoSalida = new javax.swing.JMenuItem();
+        itemListarSalida = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        nuevoPaquete.setText("Paquetes");
+        menu1.setText("Paquetes");
 
-        jMenuItem1.setText("Nuevo");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        itemNuevoPaquete.setText("Nuevo");
+        itemNuevoPaquete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                itemNuevoPaqueteActionPerformed(evt);
             }
         });
-        nuevoPaquete.add(jMenuItem1);
+        menu1.add(itemNuevoPaquete);
 
-        listarPaquete.setText("Listar");
-        nuevoPaquete.add(listarPaquete);
+        itemListarPaquete.setText("Listar");
+        menu1.add(itemListarPaquete);
 
-        jMenuBar1.add(nuevoPaquete);
+        jMenuBar1.add(menu1);
 
         jMenu2.setText("Salidas");
 
-        nuevoSalida.setText("Nuevo");
-        nuevoSalida.addActionListener(new java.awt.event.ActionListener() {
+        itemNuevoSalida.setText("Nuevo");
+        itemNuevoSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevoSalidaActionPerformed(evt);
+                itemNuevoSalidaActionPerformed(evt);
             }
         });
-        jMenu2.add(nuevoSalida);
+        jMenu2.add(itemNuevoSalida);
 
-        listarSalida.setText("Listar");
-        listarSalida.addActionListener(new java.awt.event.ActionListener() {
+        itemListarSalida.setText("Listar");
+        itemListarSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listarSalidaActionPerformed(evt);
+                itemListarSalidaActionPerformed(evt);
             }
         });
-        jMenu2.add(listarSalida);
+        jMenu2.add(itemListarSalida);
 
         jMenuBar1.add(jMenu2);
 
@@ -94,19 +97,19 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nuevoSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoSalidaActionPerformed
+    private void itemNuevoSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNuevoSalidaActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_nuevoSalidaActionPerformed
+    }//GEN-LAST:event_itemNuevoSalidaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void itemNuevoPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemNuevoPaqueteActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_itemNuevoPaqueteActionPerformed
 
-    private void listarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarSalidaActionPerformed
+    private void itemListarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemListarSalidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listarSalidaActionPerformed
+    }//GEN-LAST:event_itemListarSalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,46 +117,54 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem itemListarPaquete;
+    private javax.swing.JMenuItem itemListarSalida;
+    private javax.swing.JMenuItem itemNuevoPaquete;
+    private javax.swing.JMenuItem itemNuevoSalida;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JMenuItem listarPaquete;
-    private javax.swing.JMenuItem listarSalida;
-    private javax.swing.JMenu nuevoPaquete;
-    private javax.swing.JMenuItem nuevoSalida;
+    private javax.swing.JMenu menu1;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void MostrarCrearPaquete() {
+    public void MostrarCrearPaquete(ArrayList<Ciudad> ciudades) {
        AgregarPaquete vista = new AgregarPaquete(this,true);
+       vista.configurar(ciudades);
     }
 
     @Override
     public void MostrarListarPaquete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         ListarPaquetes vista= new ListarPaquetes(this, true);
     }
 
     @Override
     public void MostrarCrearSalida() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+       AgregarSalidas vista= new AgregarSalidas(this, true);
+    }    
 
     @Override
     public void MostrarListarSalida() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ListarSalidas vista= new ListarSalidas(this, true);
     }
 
  
-    public void setControlador(Controlador c) {
-        listarPaquete.addActionListener(c);
-        listarPaquete.setActionCommand("LISTAR PAQUETE");
-        nuevoPaquete.addActionListener(c);
-        nuevoPaquete.setActionCommand("NUEVO PAQUETE");
-        listarSalida.addActionListener(c);
-        listarSalida.setActionCommand("LISTAR SALIDA");
-        nuevoSalida.addActionListener(c);
-        nuevoSalida.setActionCommand("NUEVO SALIDA");
+    private void setControlador(PresentadorInicio c) {
+        itemListarPaquete.addActionListener(c);
+        itemListarPaquete.setActionCommand("LISTAR PAQUETE");
+        itemNuevoPaquete.addActionListener(c);
+        itemNuevoPaquete.setActionCommand("NUEVO PAQUETE");
+        itemListarSalida.addActionListener(c);
+        itemListarSalida.setActionCommand("LISTAR SALIDA");
+        itemNuevoSalida.addActionListener(c);
+        itemNuevoSalida.setActionCommand("NUEVO SALIDA");
+        configurar();
+    }
+    
+    private void configurar()
+    {
+        setLocationRelativeTo(this);
+        setVisible(true);
     }
     
 }

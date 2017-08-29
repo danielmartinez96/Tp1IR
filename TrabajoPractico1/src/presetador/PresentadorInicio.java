@@ -5,6 +5,7 @@
  */
 package presetador;
 
+import datos.AgenciaTurismo;
 import interfaces.IInicio;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,12 +15,12 @@ import vista.Inicio;
  *
  * @author Carlos
  */
-public class Controlador implements ActionListener {
+public class PresentadorInicio implements ActionListener {
 
     private IInicio vista;
     
     
-    public Controlador(IInicio vista) {
+    public PresentadorInicio(IInicio vista) {
         
         this.vista= vista;
     }
@@ -35,7 +36,7 @@ public class Controlador implements ActionListener {
             vista.MostrarListarPaquete();
             break;
             case "NUEVO PAQUETE":
-            vista.MostrarCrearPaquete();
+            vista.MostrarCrearPaquete(AgenciaTurismo.getCiudades());
             break;
             case "LISTAR SALIDA":
             vista.MostrarListarSalida();
@@ -44,7 +45,7 @@ public class Controlador implements ActionListener {
             vista.MostrarCrearSalida();
             break;
             default:
-                System.out.println("asdasd");
+            System.out.println("Error");
             break;
         }
         

@@ -5,7 +5,8 @@
  */
 package trabajopractico1;
 
-import presetador.Controlador;
+import datos.GeneradorDatos;
+import presetador.PresentadorInicio;
 import vista.Inicio;
 
 /**
@@ -19,9 +20,10 @@ public class TrabajoPractico1 {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        GeneradorDatos.instaciarDatos();
         Inicio vista = new Inicio();
-        Controlador controlador = new Controlador(vista);
-        vista.setControlador(controlador);
+       
+       
     }
     
 }

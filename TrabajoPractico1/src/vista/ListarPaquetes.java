@@ -17,6 +17,7 @@ public class ListarPaquetes extends javax.swing.JDialog {
     public ListarPaquetes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setVisible(true);
     }
 
     /**
