@@ -5,13 +5,14 @@
  */
 package vista;
 
+import interfaces.IInicio;
 import presetador.Presentador;
 
 /**
  *
  * @author Carlos
  */
-public class Inicio extends javax.swing.JFrame {
+public class Inicio extends javax.swing.JFrame implements IInicio{
 
     /**
      * Creates new form Inicio
@@ -113,4 +114,24 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void MostrarCrearPaquete() {
+       AgregarPaquete vista = new AgregarPaquete(this,true);
+    }
+
+    @Override
+    public void MostrarListarPaquete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void MostrarCrearSalida() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void MostrarListarSalida() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
