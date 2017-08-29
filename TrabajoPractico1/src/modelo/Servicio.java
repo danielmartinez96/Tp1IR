@@ -13,6 +13,12 @@ public class Servicio {
     private String descripcion;
     private Tipo tipo;
 
+    public Servicio(String descripcion, Tipo tipo) {
+        this.descripcion = descripcion;
+        this.tipo = tipo;
+    }
+    
+
     public Tipo getTipo() {
         return tipo;
     }
@@ -28,4 +34,10 @@ public class Servicio {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    @Override
+    public String toString() {
+        return descripcion ;
+    }
+    
 }

@@ -13,6 +13,11 @@ public class Tipo {
     private String nombre;
     private Rubro rubro;
 
+    public Tipo(String nombre, Rubro rubro) {
+        this.nombre = nombre;
+        this.rubro = rubro;
+    }
+
     public String getNombre() {
         return nombre;
     }

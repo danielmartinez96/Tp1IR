@@ -5,11 +5,17 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+import modelo.Ciudad;
+import modelo.Servicio;
+
 /**
  *
  * @author Carlos
  */
 public interface IAgregarPaquete {
     
+    void configurar(ArrayList<Ciudad> ciudades, ArrayList<Servicio> servicios);
+    void agregarDestino();
     void guardar();
 }

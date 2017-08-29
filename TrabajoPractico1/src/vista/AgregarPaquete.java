@@ -7,7 +7,9 @@ package vista;
 
 import interfaces.IAgregarPaquete;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import modelo.Ciudad;
+import modelo.Servicio;
 import presetador.PresentadorInicio;
 import presetador.PresentadorPaquete;
 
@@ -53,18 +55,22 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
         comboCiudadOrigen = new javax.swing.JComboBox<>();
         comboCiudadDestino = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tablaDestino = new javax.swing.JTable();
+        btnAgregarDestino = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
+        tablaServicios = new javax.swing.JTable();
+        comboServicios = new javax.swing.JComboBox<>();
+        btnAgregarServicio = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -92,7 +98,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
 
         jLabel8.setText("Ciudad destino:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaDestino.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -103,12 +109,12 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tablaDestino);
 
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarDestino.setText("Agregar");
+        btnAgregarDestino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAgregarDestinoActionPerformed(evt);
             }
         });
 
@@ -116,7 +122,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
 
         jLabel9.setText("Servicios");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tablaServicios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -127,14 +133,12 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable2);
+        jScrollPane4.setViewportView(tablaServicios);
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton2.setText("Agregar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarServicio.setText("Agregar");
+        btnAgregarServicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAgregarServicioActionPerformed(evt);
             }
         });
 
@@ -160,6 +164,12 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                 jButton6ActionPerformed(evt);
             }
         });
+
+        jLabel11.setText("Desde:");
+
+        jTextField2.setText(" ");
+
+        jLabel12.setText("Hasta:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,26 +221,38 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                             .addComponent(jLabel9)
                                             .addGap(27, 27, 27)
-                                            .addComponent(jComboBox5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(comboServicios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(layout.createSequentialGroup()
                                             .addGap(0, 0, Short.MAX_VALUE)
                                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jButton2)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addComponent(jButton4)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(btnGuardar)
-                                                    .addGap(18, 18, 18)
-                                                    .addComponent(jButton6)
-                                                    .addGap(2, 2, 2)))))
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGap(1, 1, 1)))
-                            .addComponent(jButton1)))
+                            .addComponent(btnAgregarDestino)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(219, 219, 219)
                         .addComponent(jLabel10)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jButton4)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnGuardar)
+                            .addGap(18, 18, 18)
+                            .addComponent(jButton6))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnAgregarServicio)))
+                .addGap(69, 69, 69))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -272,7 +294,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                             .addComponent(comboCiudadDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(btnAgregarDestino)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,14 +302,20 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel9)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton2)
+                            .addComponent(comboServicios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addComponent(btnAgregarServicio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4)
-                        .addGap(19, 19, 19)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGuardar)
                             .addComponent(jButton6))
@@ -297,13 +325,13 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAgregarDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDestinoActionPerformed
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAgregarDestinoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAgregarServicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarServicioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAgregarServicioActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -322,19 +350,21 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAgregarDestino;
+    private javax.swing.JButton btnAgregarServicio;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JComboBox<Ciudad> comboCiudadDestino;
     private javax.swing.JComboBox<Ciudad> comboCiudadOrigen;
     private javax.swing.JComboBox<Integer> comboDias;
     private javax.swing.JComboBox<Integer> comboNoches;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<Servicio> comboServicios;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -347,22 +377,34 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable tablaDestino;
+    private javax.swing.JTable tablaServicios;
     // End of variables declaration//GEN-END:variables
 
 private void setControlador(PresentadorPaquete c) {
         btnGuardar.addActionListener(c);
         btnGuardar.setActionCommand("GUARDAR PAQUETE");
+        btnAgregarDestino.addActionListener(c);
+        btnAgregarDestino.setActionCommand("AGREGAR DESTINO");
+         setVisible(true);
        
     }
     
-    protected void configurar(ArrayList<Ciudad> ciudades)
-    {
+   
+
+    @Override
+    public void guardar() {
+      System.out.println("sadsas");
+    }
+
+    @Override
+    public void configurar(ArrayList<Ciudad> ciudades, ArrayList<Servicio> servicios) {
         setLocationRelativeTo(this);
         comboDias.removeAllItems();
         comboNoches.removeAllItems();
@@ -376,12 +418,39 @@ private void setControlador(PresentadorPaquete c) {
                 comboCiudadDestino.addItem(ciudad);
         }
 
-        setVisible(true);
+        for (Servicio servicio : servicios) {
+            
+            comboServicios.addItem(servicio);
+        }
+        
+        DefaultTableModel tabla1 = new DefaultTableModel();
+        tabla1.addColumn("Ciudad");
+        tabla1.addColumn("Provincia");
+        tabla1.addColumn("Pais");
+        tablaDestino.setModel(tabla1);
+        
+        DefaultTableModel tabla2= new DefaultTableModel();
+        tabla2.addColumn("Tipo");
+        tabla2.addColumn("Rubro");
+        tabla2.addColumn("Descripcion");
+        tabla2.addColumn("Desde");
+        tabla2.addColumn("Hasta");
+        
+        tablaServicios.setModel(tabla2);
+        
     }
 
     @Override
-    public void guardar() {
-       //tomas todos los datos
+    public void agregarDestino() {
+       
+       Ciudad ciudad =(Ciudad)comboCiudadDestino.getSelectedItem();
+       DefaultTableModel tabla1 =(DefaultTableModel) tablaDestino.getModel();
+       tabla1.addRow(new Object[]{ciudad.getNombre(),ciudad.getProvincia().getNombre(),ciudad.getProvincia().getPais().getNombre()} );
+       
+        
+       tablaDestino.setModel(tabla1);
+        
+        
     }
     
 }

@@ -12,10 +12,22 @@ package modelo;
 public class ServicioPaquete extends Servicio{
     private int desde;
     private int hasta;
+    private Servicio servicio;
 
-    public ServicioPaquete(int desde, int hasta) {
-        this.desde = desde;
-        this.hasta = hasta;
+    public ServicioPaquete(Servicio servicio, String descripcion, Tipo tipo) {
+        super(descripcion, tipo);
+        this.servicio = servicio;
+    }
+
+   
+   
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 
     public int getDesde() {

@@ -5,6 +5,7 @@
  */
 package presetador;
 
+import datos.AgenciaTurismo;
 import interfaces.IAgregarPaquete;
 import interfaces.IListarPaquetes;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ public class PresentadorPaquete implements ActionListener {
     
     public PresentadorPaquete(IAgregarPaquete agregarPaquete) {
         this.vistaAgregar= agregarPaquete;
+        vistaAgregar.configurar(AgenciaTurismo.getCiudades(),AgenciaTurismo.getServicios());
     }
 
       public PresentadorPaquete(IListarPaquetes listarPaquetes) {
@@ -36,7 +38,9 @@ public class PresentadorPaquete implements ActionListener {
              case "GUARDAR PAQUETE":
              vistaAgregar.guardar();
              break;
-             
+             case "AGREGAR DESTINO":
+             vistaAgregar.agregarDestino();
+             break;    
              
          }
          

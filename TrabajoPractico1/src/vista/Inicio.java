@@ -130,7 +130,7 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
     @Override
     public void MostrarCrearPaquete(ArrayList<Ciudad> ciudades) {
        AgregarPaquete vista = new AgregarPaquete(this,true);
-       vista.configurar(ciudades);
+
     }
 
     @Override

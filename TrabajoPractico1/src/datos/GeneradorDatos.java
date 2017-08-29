@@ -8,6 +8,10 @@ package datos;
 import modelo.Ciudad;
 import modelo.Pais;
 import modelo.Provincia;
+import modelo.Rubro;
+import modelo.Servicio;
+
+import modelo.Tipo;
 
 /**
  *
@@ -21,6 +25,12 @@ public final class GeneradorDatos {
         Ciudad ciudad1 = new Ciudad("metan",provincia1);
        
         AgenciaTurismo.agregarCiudad(ciudad1);
+        
+        Rubro rubro1 = new Rubro("Transporte");
+        Tipo tipo1 = new Tipo("Omnibus", rubro1);
+        Servicio servicio = new Servicio("Tansporte en omnibus", tipo1);
+        
+        AgenciaTurismo.agregarServicioPaquete(servicio);
         
     }
             
