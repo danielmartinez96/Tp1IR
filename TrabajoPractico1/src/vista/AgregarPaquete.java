@@ -18,7 +18,7 @@ public class AgregarPaquete extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(this);
-        setVisible(true);
+        show();
     }
     /**
      * This method is called from within the constructor to initialize the form.

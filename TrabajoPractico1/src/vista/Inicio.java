@@ -19,10 +19,7 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
      */
     public Inicio() {
         initComponents();
-         listarPaquete.setAction(action);
-        nuevoPaquete.addActionListener(c);
-        listarSalida.addActionListener(c);
-        nuevoSalida.addActionListener(c);
+         
         this.show();
     }
 

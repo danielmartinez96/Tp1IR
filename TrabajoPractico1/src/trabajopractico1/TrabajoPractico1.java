@@ -20,6 +20,8 @@ public class TrabajoPractico1 {
     public static void main(String[] args) {
         // TODO code application logic here
         Inicio vista = new Inicio();
+        Controlador controlador = new Controlador(vista);
+        vista.setControlador(controlador);
     }
     
 }

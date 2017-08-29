@@ -25,8 +25,29 @@ public class Controlador implements ActionListener {
     }
 
     @Override
-    public void actionPerformed() {
+    public void actionPerformed(ActionEvent evento) {
        
+        String comando = evento.getActionCommand();
+        
+        switch(comando)
+        {
+            case "LISTAR PAQUETE":
+            vista.MostrarListarPaquete();
+            break;
+            case "NUEVO PAQUETE":
+            vista.MostrarCrearPaquete();
+            break;
+            case "LISTAR SALIDA":
+            vista.MostrarListarSalida();
+            break;
+            case "NUEVO SALIDA":
+            vista.MostrarCrearSalida();
+            break;
+            default:
+                System.out.println("asdasd");
+            break;
+        }
+        
     }
 
 }
