@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import presetador.Controlador;
+
 /**
  *
  * @author Carlos
@@ -14,4 +16,5 @@ public interface IInicio {
     public void MostrarListarPaquete();
     public void MostrarCrearSalida();
     public void MostrarListarSalida();
+
 }

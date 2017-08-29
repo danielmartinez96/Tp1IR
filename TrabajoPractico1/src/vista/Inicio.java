@@ -6,7 +6,7 @@
 package vista;
 
 import interfaces.IInicio;
-import presetador.Presentador;
+import presetador.Controlador;
 
 /**
  *
@@ -18,8 +18,11 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
      * Creates new form Inicio
      */
     public Inicio() {
-        Presentador p= new Presentador(this);
         initComponents();
+         listarPaquete.setAction(action);
+        nuevoPaquete.addActionListener(c);
+        listarSalida.addActionListener(c);
+        nuevoSalida.addActionListener(c);
         this.show();
     }
 
@@ -34,16 +37,16 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        nuevoPaquete = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        listarPaquete = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
+        nuevoSalida = new javax.swing.JMenuItem();
+        listarSalida = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Paquetes");
+        nuevoPaquete.setText("Paquetes");
 
         jMenuItem1.setText("Nuevo");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -51,25 +54,30 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        nuevoPaquete.add(jMenuItem1);
 
-        jMenuItem2.setText("Listar");
-        jMenu1.add(jMenuItem2);
+        listarPaquete.setText("Listar");
+        nuevoPaquete.add(listarPaquete);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(nuevoPaquete);
 
         jMenu2.setText("Salidas");
 
-        jMenuItem3.setText("Nuevo");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        nuevoSalida.setText("Nuevo");
+        nuevoSalida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                nuevoSalidaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu2.add(nuevoSalida);
 
-        jMenuItem4.setText("Listar");
-        jMenu2.add(jMenuItem4);
+        listarSalida.setText("Listar");
+        listarSalida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listarSalidaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(listarSalida);
 
         jMenuBar1.add(jMenu2);
 
@@ -89,15 +97,19 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void nuevoSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoSalidaActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_nuevoSalidaActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void listarSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listarSalidaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,14 +117,14 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JMenuItem listarPaquete;
+    private javax.swing.JMenuItem listarSalida;
+    private javax.swing.JMenu nuevoPaquete;
+    private javax.swing.JMenuItem nuevoSalida;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -134,4 +146,17 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
     public void MostrarListarSalida() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+ 
+    public void setControlador(Controlador c) {
+        listarPaquete.addActionListener(c);
+        listarPaquete.setActionCommand("LISTAR PAQUETE");
+        nuevoPaquete.addActionListener(c);
+        nuevoPaquete.setActionCommand("NUEVO PAQUETE");
+        listarSalida.addActionListener(c);
+        listarSalida.setActionCommand("LISTAR SALIDA");
+        nuevoSalida.addActionListener(c);
+        nuevoSalida.setActionCommand("NUEVO SALIDA");
+    }
+    
 }

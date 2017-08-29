@@ -5,7 +5,7 @@
  */
 package trabajopractico1;
 
-import presetador.Presentador;
+import presetador.Controlador;
 import vista.Inicio;
 
 /**
