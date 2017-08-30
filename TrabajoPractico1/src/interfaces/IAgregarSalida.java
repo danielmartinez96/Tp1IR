@@ -14,6 +14,7 @@ import modelo.Paquete;
  */
 public interface IAgregarSalida {
 
-    public void configuracion(ArrayList<Paquete> paquetes);
-    
+    void configuracion(ArrayList<Paquete> paquetes);
+    void guardar();
+    void salir();
 }

@@ -24,7 +24,6 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
         super(parent, modal);
         initComponents();
         setPresentador(new PresentadorSalida(this));
-        
     }
 
     /**
@@ -39,9 +38,9 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaSalidas = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
+        btnDesactivar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,16 +59,16 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
         ));
         jScrollPane1.setViewportView(tablaSalidas);
 
-        jButton1.setText("Salir");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSalirActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Editar");
+        btnEditar.setText("Editar");
 
-        jButton4.setText("Desactivar");
+        btnDesactivar.setText("Desactivar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,13 +78,13 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(245, 245, 245)
-                        .addComponent(jButton4)
+                        .addComponent(btnDesactivar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(183, 183, 183)
                         .addComponent(jLabel1))
@@ -103,27 +102,27 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(btnDesactivar)
+                    .addComponent(btnEditar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1))
+                .addComponent(btnSalir))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btnDesactivar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaSalidas;
@@ -152,15 +151,32 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
                 salida.getTarifa(),
                 salida.getEstado()
             });
-            
-            
-       
         }
-  tablaSalidas.setModel(tabla1);
-       }
+      tablaSalidas.setModel(tabla1);
+    }
 
-    private void setPresentador(PresentadorSalida presentadorSalida) {
-
+    private void setPresentador(PresentadorSalida c) {
+        btnSalir.addActionListener(c);
+        btnSalir.setActionCommand("SALIR");
+        btnDesactivar.addActionListener(c);
+        btnDesactivar.setActionCommand("DESACTIVAR");
+        btnEditar.addActionListener(c);
+        btnEditar.setActionCommand("EDITAR");
         setVisible(true);
+    }
+
+    @Override
+    public void editar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void salir() {
+        this.dispose();
+    }
+
+    @Override
+    public void desactivar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

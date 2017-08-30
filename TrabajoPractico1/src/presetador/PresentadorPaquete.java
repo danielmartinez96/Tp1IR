@@ -43,53 +43,52 @@ public class PresentadorPaquete implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent evento) {
-     
         
-         String comando = evento.getActionCommand();
-      // COMANDOS DE VISTA AGREGAR
-         if(vista==Vista.AGREGAR){
-         switch(comando){
-             case "GUARDAR PAQUETE":
-             Paquete paquete = new Paquete(vistaAgregar.getNombre(), vistaAgregar.getDescripcion(), vistaAgregar.getItinerario(), vistaAgregar.getCondicionComercial(), vistaAgregar.getDias(), vistaAgregar.getNoches());
-             paquete.setOrigen(vistaAgregar.getCiudadOrigen());
-             for(String nombre : vistaAgregar.getCiudadesDestino() )
-             {
-                 paquete.agregarCiudadDestino(AgenciaTurismo.buscarCiudad(nombre));
-             }
-                     
-             AgenciaTurismo.agregarPaquete(paquete);
-                 
-             vistaAgregar.guardar();
-             break;
-             case "AGREGAR DESTINO":
-             vistaAgregar.agregarDestino();
-             break;    
-             case "AGREGAR SERVICIO":
-             vistaAgregar.agregarServicio();
-             break;  
-             case "QUITAR DESTINO":
-             vistaAgregar.quitarDestino();
-             break;
-             case "QUITAR SERVICIO":
-             vistaAgregar.quitarServicio();
-             break;
-             
-            }   
-         }
-         // COMANDOS DE VISTA LISTAR
-          if(vista==Vista.LISTAR){
-               switch(comando){
-                   
-                   
-                   
-                   
+        String comando = evento.getActionCommand();
+         
+        // COMANDOS DE VISTA AGREGAR
+        if(vista==Vista.AGREGAR){
+        switch(comando){
+            case "GUARDAR PAQUETE":
+               Paquete paquete = new Paquete(vistaAgregar.getNombre(), vistaAgregar.getDescripcion(), vistaAgregar.getItinerario(), vistaAgregar.getCondicionComercial(), vistaAgregar.getDias(), vistaAgregar.getNoches());
+               paquete.setOrigen(vistaAgregar.getCiudadOrigen());
+               for(String nombre : vistaAgregar.getCiudadesDestino() )
+               {
+                   paquete.agregarCiudadDestino(AgenciaTurismo.buscarCiudad(nombre));
                }
 
-          }
+               AgenciaTurismo.agregarPaquete(paquete);
+
+               vistaAgregar.guardar();
+               break;
+            case "AGREGAR DESTINO":
+               vistaAgregar.agregarDestino();
+               break;    
+            case "AGREGAR SERVICIO":
+               vistaAgregar.agregarServicio();
+               break;  
+            case "QUITAR DESTINO":
+               vistaAgregar.quitarDestino();
+               break;
+            case "QUITAR SERVICIO":
+               vistaAgregar.quitarServicio();
+               break;
+        }   
+        }
          
-         
+        // COMANDOS DE VISTA LISTAR
+        if(vista==Vista.LISTAR){
+            switch(comando){
+                case "MODIFICAR PAQUETE":
+                    vistaListar.modificarPaquete();
+                    break;
+                case "MODIFICAR PAQUETE ESTADO":
+                    vistaListar.modificarPaqueteEstado();
+                    break;
+                case "SALIR":
+                    vistaListar.salir();
+                    break;
+            }
+        }
     }
-    
-    
-    
 }

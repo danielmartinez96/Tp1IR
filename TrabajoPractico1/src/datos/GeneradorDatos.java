@@ -32,15 +32,25 @@ public final class GeneradorDatos {
     public static void instaciarDatos(){
         Pais pais1 =new Pais("Argentina");
         Provincia provincia1= new Provincia("Salta", pais1);
-        Ciudad ciudad1 = new Ciudad("metan",provincia1);
-       
+        Ciudad ciudad1 = new Ciudad("Metan",provincia1);
+        
+        Pais pais2 = new Pais("Argentina");
+        Provincia provincia2 = new Provincia("Tucuman", pais2);
+        Ciudad ciudad2 = new Ciudad("San Miguel de Tucuman", provincia2);
+        
         AgenciaTurismo.agregarCiudad(ciudad1);
+        AgenciaTurismo.agregarCiudad(ciudad2);
         
         Rubro rubro1 = new Rubro("Transporte");
         Tipo tipo1 = new Tipo("Omnibus", rubro1);
         Servicio servicio1 = new Servicio("Tansporte en omnibus", tipo1);
         
+        Rubro rubro2 = new Rubro("Alojamiento");
+        Tipo tipo2 = new Tipo("Hotel", rubro2);
+        Servicio servicio2 = new Servicio("Noche de hotel", tipo2);
+        
         AgenciaTurismo.agregarServicioPaquete(servicio1);
+        AgenciaTurismo.agregarServicioPaquete(servicio2);
         
         Paquete paquete1 = new Paquete("Paquete 1", "A metan transporte y hotel", "Transporte luego Hotel", "Ni ideas", 2 , 4);
         paquete1.setOrigen(ciudad1);
@@ -54,12 +64,8 @@ public final class GeneradorDatos {
         
         AgenciaTurismo.agregarPaquete(paquete1);
         
-        
         Salida salida = new Salida(paquete1, 10, 5, 10, 2010, new Tarifa(1000, Base.Doble), EstadoSalida.Creada);
         AgenciaTurismo.agregarSalida(salida);
-        
-        
-        
     }
             
           

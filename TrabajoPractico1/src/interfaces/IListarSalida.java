@@ -14,6 +14,8 @@ import modelo.Salida;
  */
 public interface IListarSalida {
 
-    public void configuracion(ArrayList<Salida> salidas);
-    
+    void configuracion(ArrayList<Salida> salidas);
+    void desactivar();
+    void editar();
+    void salir();
 }

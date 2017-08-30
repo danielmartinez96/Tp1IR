@@ -149,11 +149,11 @@ public class Paquete {
 
     public String destinosConcatenados() {
         String texto="";
-    Iterator<Ciudad> iterador = destinos.iterator();
+        Iterator<Ciudad> iterador = destinos.iterator();
         while(iterador.hasNext()){
-	texto = texto +iterador.next().getNombre()+"-";
-	
-    }
+            texto = texto + iterador.next().getNombre() + "-";
+        }
+        
         return texto;
     }
 

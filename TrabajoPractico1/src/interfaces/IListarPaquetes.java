@@ -14,6 +14,8 @@ import modelo.Paquete;
  */
 public interface IListarPaquetes {
 
-    public void configurar(ArrayList<Paquete> paquetes);
-    
+    void configurar(ArrayList<Paquete> paquetes);
+    void modificarPaquete();
+    void modificarPaqueteEstado();
+    void salir();
 }

@@ -14,9 +14,9 @@ import presetador.PresentadorInicio;
  * @author Carlos
  */
 public interface IInicio {
-    public void MostrarCrearPaquete();
-    public void MostrarListarPaquete();
-    public void MostrarCrearSalida();
-    public void MostrarListarSalida();
-
+    
+    void MostrarCrearPaquete();
+    void MostrarListarPaquete();
+    void MostrarCrearSalida();
+    void MostrarListarSalida();
 }

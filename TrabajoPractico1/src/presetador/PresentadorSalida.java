@@ -40,8 +40,38 @@ public class PresentadorSalida implements ActionListener{
     
        
        @Override
-    public void actionPerformed(ActionEvent ae) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void actionPerformed(ActionEvent evento) {
+        String comando = evento.getActionCommand();
+        
+        // Comando de VISTA AGREGAR
+        if(vista == vista.AGREGAR)
+        {
+            switch(comando)
+            {
+                case "GUARDAR":
+                    vistaAgregar.guardar();
+                    break;
+                case "SALIR":
+                    vistaAgregar.salir();
+                    break;
+            }
+        }
+        
+        // Comandos de VISTA LISTAR
+        if(vista == vista.LISTAR)
+        {
+            switch(comando){
+                case "SALIR":
+                    vistaListar.salir();
+                    break;
+                case "EDITAR":
+                    vistaListar.editar();
+                    break;
+                case "DESACTIVAR":
+                    vistaListar.desactivar();
+                    break;
+            }
+        }
     }
        
 }

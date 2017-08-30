@@ -39,8 +39,8 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPaquetes = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnModificarEstado = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -66,9 +66,9 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
             }
         });
 
-        jButton3.setText("Modificar Estado");
+        btnModificarEstado.setText("Modificar Estado");
 
-        jButton4.setText("Modificar Paquete");
+        btnModificar.setText("Modificar Paquete");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,9 +87,9 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton4)
+                                .addComponent(btnModificar)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton3)))))
+                                .addComponent(btnModificarEstado)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -105,8 +105,8 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(btnModificarEstado)
+                    .addComponent(btnModificar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(btnSalir)
                 .addContainerGap())
@@ -116,7 +116,7 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
+        //this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
     /**
@@ -124,16 +124,21 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnModificarEstado;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaPaquetes;
     // End of variables declaration//GEN-END:variables
 
     private void setPresentador(PresentadorPaquete c) {
-        
+        btnModificarEstado.addActionListener(c);
+        btnModificarEstado.setActionCommand("MODIFICAR PAQUETE ESTADO");
+        btnModificar.addActionListener(c);
+        btnModificar.setActionCommand("MODIFICAR PAQUETE");
+        btnSalir.addActionListener(c);
+        btnSalir.setActionCommand("SALIR");
         setVisible(true);
     }
 
@@ -146,26 +151,42 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
         tabla1.addColumn("Nombre");
         tabla1.addColumn("Origen");
         tabla1.addColumn("Destino");
-         tabla1.addColumn("Cant dias");
+        tabla1.addColumn("Cant dias");
         tabla1.addColumn("Cant noche");
         tabla1.addColumn("Estado");
        
         for (Paquete paquete : paquetes) {
             
             tabla1.addRow(new Object[]{
-        paquete.getDescripcion(),
-        paquete.getNombre(),
-        paquete.getOrigen().getNombre(),
-        paquete.destinosConcatenados(),
-        paquete.getCantDias(),
-        paquete.getCantNoches(),
-        paquete.getEstado()
-        });
+            paquete.getDescripcion(),
+            paquete.getNombre(),
+            paquete.getOrigen().getNombre(),
+            paquete.destinosConcatenados(),
+            paquete.getCantDias(),
+            paquete.getCantNoches(),
+            paquete.getEstado()
+            });
         }
         
-        
         tablaPaquetes.setModel(tabla1);
-        
+    }
 
+    @Override
+    public void modificarPaquete() {
+        DefaultTableModel tabla1 =(DefaultTableModel) tablaPaquetes.getModel();
+         if(tablaPaquetes.getSelectedRow()!=-1){
+             
+            //Paquete paquete = new Paquete(tablaPaquetes.getSe);
+         }
+    }
+
+    @Override
+    public void modificarPaqueteEstado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void salir() {
+        this.dispose();
     }
 }

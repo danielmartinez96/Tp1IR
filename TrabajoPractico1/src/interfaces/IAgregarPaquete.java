@@ -32,6 +32,4 @@ public interface IAgregarPaquete {
     Ciudad getCiudadOrigen();
     ArrayList<String> getCiudadesDestino();
     ArrayList<ServicioPaquete> getServicioPaquete();
-            
-    
 }
