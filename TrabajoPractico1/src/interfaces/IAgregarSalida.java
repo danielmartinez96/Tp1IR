@@ -6,6 +6,7 @@
 package interfaces;
 
 import java.util.ArrayList;
+import modelo.Base;
 import modelo.Paquete;
 
 /**
@@ -16,5 +17,12 @@ public interface IAgregarSalida {
 
     void configuracion(ArrayList<Paquete> paquetes);
     void guardar();
+    int getDia();
+    int getMes();
+    int getAño();
+    int getCupo();
+    Paquete getPaquete();
+    Base getBase();
+    float getTarifa();
     void salir();
 }

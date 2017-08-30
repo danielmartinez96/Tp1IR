@@ -10,6 +10,10 @@ import interfaces.IAgregarSalida;
 import interfaces.IListarSalida;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.Base;
+import modelo.EstadoSalida;
+import modelo.Salida;
+import modelo.Tarifa;
 
 /**
  *
@@ -49,6 +53,9 @@ public class PresentadorSalida implements ActionListener{
             switch(comando)
             {
                 case "GUARDAR":
+                    
+                    Salida salida = new Salida(vistaAgregar.getPaquete(), vistaAgregar.getCupo(), vistaAgregar.getDia(), vistaAgregar.getMes(), vistaAgregar.getAño(),new Tarifa(vistaAgregar.getTarifa(), vistaAgregar.getBase()), EstadoSalida.Creada);
+                    AgenciaTurismo.agregarSalida(salida);
                     vistaAgregar.guardar();
                     break;
                 case "SALIR":
