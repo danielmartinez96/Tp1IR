@@ -11,6 +11,7 @@ import interfaces.IListarPaquetes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.Ciudad;
+import modelo.EstadoPaquete;
 
 import modelo.Paquete;
 
@@ -83,7 +84,9 @@ public class PresentadorPaquete implements ActionListener {
                     vistaListar.modificarPaquete();
                     break;
                 case "MODIFICAR PAQUETE ESTADO":
-                    vistaListar.modificarPaqueteEstado();
+                    EstadoPaquete estado = vistaListar.modificarPaqueteEstado();
+                    AgenciaTurismo.actualizarEstadoPaquete(vistaListar.getPaquete(), estado);
+                    vistaListar.configurar(AgenciaTurismo.getPaquetes());
                     break;
                 case "SALIR":
                     vistaListar.salir();

@@ -7,6 +7,7 @@ package datos;
 
 import java.util.ArrayList;
 import modelo.Ciudad;
+import modelo.EstadoPaquete;
 import modelo.Paquete;
 import modelo.Salida;
 import modelo.Servicio;
@@ -73,6 +74,26 @@ public static Ciudad buscarCiudad(String nombre)
     }
     
     return null;
+}
+
+public static void actualizarEstadoPaquete(String nombre, EstadoPaquete estado)
+{
+    Paquete p ;
+    for (Paquete paquete : PAQUETES) {
+        
+        if(paquete.getNombre()== nombre)
+        {
+           p= paquete;
+           int index = PAQUETES.indexOf(p);
+           PAQUETES.remove(index);
+           p.setEstado(estado);
+           PAQUETES.add(index, p);
+           break;
+        }
+    }
+   
+    
+    
 }
 
 }

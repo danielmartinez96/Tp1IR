@@ -7,7 +7,10 @@ package vista;
 
 import interfaces.IListarPaquetes;
 import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.EstadoPaquete;
 import modelo.Paquete;
 import presetador.PresentadorPaquete;
 
@@ -145,8 +148,9 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
     @Override
     public void configurar(ArrayList<Paquete> paquetes) {
         setLocationRelativeTo(this);
-        
+        tablaPaquetes.removeAll();
         DefaultTableModel tabla1=new DefaultTableModel();
+       
         tabla1.addColumn("Descripcion");
         tabla1.addColumn("Nombre");
         tabla1.addColumn("Origen");
@@ -176,17 +180,48 @@ public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquet
         DefaultTableModel tabla1 =(DefaultTableModel) tablaPaquetes.getModel();
          if(tablaPaquetes.getSelectedRow()!=-1){
              
-            //Paquete paquete = new Paquete(tablaPaquetes.getSe);
+            
          }
     }
 
     @Override
-    public void modificarPaqueteEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public EstadoPaquete modificarPaqueteEstado() {
+      
+        
+         EstadoPaquete[] estados = { EstadoPaquete.Activo, EstadoPaquete.Inactivo };
+          JFrame frame = new JFrame("Cambio de estado");
+          EstadoPaquete estado =  (EstadoPaquete) JOptionPane.showInputDialog(frame, 
+          "What is your favorite pizza?",
+          "Favorite Pizza",
+        JOptionPane.QUESTION_MESSAGE, 
+        null, 
+        estados, 
+        estados[0]);
+         
+         
+         
+         return estado;
+          
+    }
+     @Override
+    public String getPaquete() {
+        String nombre="";
+        if (tablaPaquetes.getSelectedRow() != -1) {
+            // String estado = String.valueOf(tablaPaquetes.getValueAt(tablaPaquetes.getSelectedRow(), 5));
+            nombre = String.valueOf(tablaPaquetes.getValueAt(tablaPaquetes.getSelectedRow(), 1));
+
+        }
+     
+        return nombre;
     }
 
     @Override
     public void salir() {
-        this.dispose();
+        dispose();
     }
 }
+    
+
+   
+
+   

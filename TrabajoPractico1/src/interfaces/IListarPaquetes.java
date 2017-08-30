@@ -6,6 +6,7 @@
 package interfaces;
 
 import java.util.ArrayList;
+import modelo.EstadoPaquete;
 import modelo.Paquete;
 
 /**
@@ -14,8 +15,11 @@ import modelo.Paquete;
  */
 public interface IListarPaquetes {
 
+    void salir();
     void configurar(ArrayList<Paquete> paquetes);
     void modificarPaquete();
-    void modificarPaqueteEstado();
-    void salir();
+    EstadoPaquete modificarPaqueteEstado();
+    String getPaquete();
+    
+   
 }

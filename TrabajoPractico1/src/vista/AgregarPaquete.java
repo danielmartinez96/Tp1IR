@@ -402,7 +402,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
         btnQuitarServicio.addActionListener(c);
         btnQuitarServicio.setActionCommand("QUITAR SERVICIO");
        
-          setVisible(true);
+        
     }
     
    
