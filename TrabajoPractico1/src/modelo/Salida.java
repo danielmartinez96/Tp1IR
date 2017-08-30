@@ -5,7 +5,10 @@
  */
 package modelo;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -15,9 +18,18 @@ public class Salida {
     private Paquete paquete;
     private int cupoSalida;
     private int numero;
-    private Calendar fecha;
+    private Date fecha;
     private Tarifa tarifa;
     private EstadoSalida estado;
+
+    public Salida(Paquete paquete, int cupoSalida, int d,int m, int a, Tarifa tarifa, EstadoSalida estado) {
+        this.paquete = paquete;
+        this.cupoSalida = cupoSalida;
+        this.fecha= new Date(d, m, a);
+        this.tarifa = tarifa;
+        this.estado = estado;
+    }
+    
 
     public EstadoSalida getEstado() {
         return estado;
@@ -51,11 +63,13 @@ public class Salida {
         this.numero = numero;
     }
 
-    public Calendar getFecha() {
-        return fecha;
+    public String getFecha() {
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yyyy");
+        return sdf.format(fecha);
     }
 
-    public void setFecha(Calendar fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -65,5 +79,10 @@ public class Salida {
 
     public void setTarifa(Tarifa tarifa) {
         this.tarifa = tarifa;
+    }
+
+    private void agregarFecha(int d,int m,int a) {
+    
+        
     }
 }

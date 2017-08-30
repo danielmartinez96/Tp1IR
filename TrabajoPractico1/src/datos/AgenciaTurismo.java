@@ -8,6 +8,7 @@ package datos;
 import java.util.ArrayList;
 import modelo.Ciudad;
 import modelo.Paquete;
+import modelo.Salida;
 import modelo.Servicio;
 
 
@@ -19,6 +20,7 @@ public final class AgenciaTurismo {
     private static  ArrayList<Paquete> PAQUETES= new ArrayList<>();
     private static ArrayList<Ciudad> CIUDADES= new ArrayList<>();
     private static ArrayList<Servicio> SERVICIOS = new ArrayList<>();
+    private static ArrayList<Salida> SALIDAS= new ArrayList<>();
             
             
 public static void agregarPaquete(Paquete paquete)
@@ -52,5 +54,14 @@ public static ArrayList<Servicio> getServicios()
     return SERVICIOS;
 }
 
+public static void agregarSalida(Salida salida)
+{
+    SALIDAS.add(salida);
+}
+
+public static ArrayList<Salida> getSalidas()
+{
+    return SALIDAS;
+}
 
 }

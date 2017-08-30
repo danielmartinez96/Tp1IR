@@ -5,15 +5,21 @@
  */
 package datos;
 
+import java.util.Calendar;
+import java.util.Date;
+import modelo.Base;
 import modelo.Ciudad;
 import modelo.EstadoPaquete;
+import modelo.EstadoSalida;
 import modelo.Pais;
 import modelo.Paquete;
 import modelo.PasoFronterizo;
 import modelo.Provincia;
 import modelo.Rubro;
+import modelo.Salida;
 import modelo.Servicio;
 import modelo.ServicioPaquete;
+import modelo.Tarifa;
 
 import modelo.Tipo;
 
@@ -47,6 +53,13 @@ public final class GeneradorDatos {
         paquete1.setEstado(EstadoPaquete.Creado);
         
         AgenciaTurismo.agregarPaquete(paquete1);
+        
+        
+        Salida salida = new Salida(paquete1, 10, 5, 10, 2010, new Tarifa(1000, Base.Doble), EstadoSalida.Creada);
+        AgenciaTurismo.agregarSalida(salida);
+        
+        
+        
     }
             
           

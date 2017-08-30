@@ -5,6 +5,7 @@
  */
 package presetador;
 
+import datos.AgenciaTurismo;
 import interfaces.IAgregarSalida;
 import interfaces.IListarSalida;
 import java.awt.event.ActionEvent;
@@ -26,14 +27,14 @@ public class PresentadorSalida implements ActionListener{
     public PresentadorSalida(IAgregarSalida vistaAgeAgregarSalida)
     {
         this.vistaAgregar= vistaAgeAgregarSalida;
-        vistaAgregar.configuracion();
+        vistaAgregar.configuracion(AgenciaTurismo.getPaquetes());
         vista= Vista.AGREGAR;
     }
     
        public PresentadorSalida(IListarSalida vistaListarSalida)
     {
         this.vistaListar= vistaListarSalida;
-        vistaListar.configuracion();
+        vistaListar.configuracion(AgenciaTurismo.getSalidas());
         vista= Vista.LISTAR;
     }
     

@@ -156,4 +156,13 @@ public class Paquete {
     }
         return texto;
     }
+
+    @Override
+    public String toString() {
+        return nombre; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
+    
+         
 }

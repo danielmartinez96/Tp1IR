@@ -13,6 +13,11 @@ public class Tarifa {
     private float precio;
     private Base base;
 
+    public Tarifa(float precio, Base base) {
+        this.precio = precio;
+        this.base = base;
+    }
+
     public float getPrecio() {
         return precio;
     }
@@ -28,4 +33,11 @@ public class Tarifa {
     public void setBase(Base base) {
         this.base = base;
     }
+
+    @Override
+    public String toString() {
+      return base+"-"+precio;
+    }
+    
+    
 }

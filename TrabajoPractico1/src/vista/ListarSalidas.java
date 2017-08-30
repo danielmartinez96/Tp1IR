@@ -6,7 +6,9 @@
 package vista;
 
 import interfaces.IListarSalida;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import modelo.Salida;
 import presetador.PresentadorSalida;
 
 /**
@@ -36,7 +38,7 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaSalidas = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -45,7 +47,7 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
 
         jLabel1.setText("Lista de Salidas");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaSalidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,9 +58,14 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaSalidas);
 
         jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Editar");
 
@@ -105,6 +112,10 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -115,16 +126,38 @@ public class ListarSalidas extends javax.swing.JDialog implements IListarSalida{
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaSalidas;
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void configuracion() {
+    public void configuracion(ArrayList<Salida> salidas) {
         setLocationRelativeTo(this);
         
-        DefaultTableModel tabla1 = 
-
-    }
+      DefaultTableModel tabla1 = new DefaultTableModel();
+      
+      tabla1.addColumn("Numero");
+      tabla1.addColumn("Paquete");
+      tabla1.addColumn("Cupo");
+      tabla1.addColumn("Fecha");
+      tabla1.addColumn("Base-Tarifa");
+      tabla1.addColumn("Estado");
+      
+        for (Salida salida : salidas) {
+            
+            tabla1.addRow(new Object[]{
+                salida.getNumero(),
+                salida.getPaquete().getNombre(),
+                salida.getCupoSalida(),
+                salida.getFecha(),
+                salida.getTarifa(),
+                salida.getEstado()
+            });
+            
+            
+       
+        }
+  tablaSalidas.setModel(tabla1);
+       }
 
     private void setPresentador(PresentadorSalida presentadorSalida) {
 

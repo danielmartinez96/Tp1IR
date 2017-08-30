@@ -5,12 +5,15 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+import modelo.Salida;
+
 /**
  *
  * @author DanielM
  */
 public interface IListarSalida {
 
-    public void configuracion();
+    public void configuracion(ArrayList<Salida> salidas);
     
 }

@@ -5,12 +5,15 @@
  */
 package interfaces;
 
+import java.util.ArrayList;
+import modelo.Paquete;
+
 /**
  *
  * @author DanielM
  */
 public interface IAgregarSalida {
 
-    public void configuracion();
+    public void configuracion(ArrayList<Paquete> paquetes);
     
 }
