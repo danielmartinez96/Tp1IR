@@ -5,11 +5,14 @@
  */
 package vista;
 
+import interfaces.IAgregarSalida;
+import presetador.PresentadorSalida;
+
 /**
  *
  * @author DanielM
  */
-public class AgregarSalidas extends javax.swing.JDialog {
+public class AgregarSalidas extends javax.swing.JDialog implements IAgregarSalida{
 
     /**
      * Creates new form AgregarSalidas
@@ -17,7 +20,8 @@ public class AgregarSalidas extends javax.swing.JDialog {
     public AgregarSalidas(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setVisible(true);
+        setPresentador(new PresentadorSalida(this));
+        
     }
 
     /**
@@ -167,4 +171,14 @@ public class AgregarSalidas extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void configuracion() {
+        setLocationRelativeTo(this);
+        
+    }
+
+    private void setPresentador(PresentadorSalida presentadorSalida) {
+        setVisible(true);
+    }
 }

@@ -5,11 +5,17 @@
  */
 package vista;
 
+import interfaces.IListarPaquetes;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+import modelo.Paquete;
+import presetador.PresentadorPaquete;
+
 /**
  *
  * @author Carlos
  */
-public class ListarPaquetes extends javax.swing.JDialog {
+public class ListarPaquetes extends javax.swing.JDialog implements IListarPaquetes{
 
     /**
      * Creates new form ListarPaquetes
@@ -17,7 +23,7 @@ public class ListarPaquetes extends javax.swing.JDialog {
     public ListarPaquetes(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setVisible(true);
+        setPresentador(new PresentadorPaquete(this));
     }
 
     /**
@@ -31,9 +37,8 @@ public class ListarPaquetes extends javax.swing.JDialog {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tablaPaquetes = new javax.swing.JTable();
+        btnSalir = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -41,7 +46,7 @@ public class ListarPaquetes extends javax.swing.JDialog {
 
         jLabel1.setText("Lista de Paquetes");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaPaquetes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -52,11 +57,14 @@ public class ListarPaquetes extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaPaquetes);
 
-        jButton1.setText("Salir");
-
-        jButton2.setText("Guardar");
+        btnSalir.setText("Salir");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Modificar Estado");
 
@@ -70,9 +78,7 @@ public class ListarPaquetes extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,26 +108,64 @@ public class ListarPaquetes extends javax.swing.JDialog {
                     .addComponent(jButton3)
                     .addComponent(jButton4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addComponent(btnSalir)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaPaquetes;
     // End of variables declaration//GEN-END:variables
+
+    private void setPresentador(PresentadorPaquete c) {
+        
+        setVisible(true);
+    }
+
+    @Override
+    public void configurar(ArrayList<Paquete> paquetes) {
+        setLocationRelativeTo(this);
+        
+        DefaultTableModel tabla1=new DefaultTableModel();
+        tabla1.addColumn("Descripcion");
+        tabla1.addColumn("Nombre");
+        tabla1.addColumn("Origen");
+        tabla1.addColumn("Destino");
+         tabla1.addColumn("Cant dias");
+        tabla1.addColumn("Cant noche");
+        tabla1.addColumn("Estado");
+       
+        for (Paquete paquete : paquetes) {
+            
+            tabla1.addRow(new Object[]{
+        paquete.getDescripcion(),
+        paquete.getNombre(),
+        paquete.getOrigen().getNombre(),
+        paquete.destinosConcatenados(),
+        paquete.getCantDias(),
+        paquete.getCantNoches(),
+        paquete.getEstado()
+        });
+        }
+        
+        
+        tablaPaquetes.setModel(tabla1);
+        
+
+    }
 }

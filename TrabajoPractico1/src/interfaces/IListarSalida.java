@@ -5,15 +5,12 @@
  */
 package interfaces;
 
-import java.util.ArrayList;
-import modelo.Paquete;
-
 /**
  *
- * @author Carlos
+ * @author DanielM
  */
-public interface IListarPaquetes {
+public interface IListarSalida {
 
-    public void configurar(ArrayList<Paquete> paquetes);
+    public void configuracion();
     
 }

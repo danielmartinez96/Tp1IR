@@ -9,13 +9,14 @@ package modelo;
  *
  * @author Carlos
  */
-public class ServicioPaquete extends Servicio{
+public class ServicioPaquete {
     private int desde;
     private int hasta;
     private Servicio servicio;
 
-    public ServicioPaquete(Servicio servicio, String descripcion, Tipo tipo) {
-        super(descripcion, tipo);
+    public ServicioPaquete(Servicio servicio, int desde,int hasta ) {
+        this.desde= desde;
+        this.hasta= hasta;
         this.servicio = servicio;
     }
 

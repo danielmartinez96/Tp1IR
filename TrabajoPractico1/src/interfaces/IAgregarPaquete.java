@@ -17,5 +17,8 @@ public interface IAgregarPaquete {
     
     void configurar(ArrayList<Ciudad> ciudades, ArrayList<Servicio> servicios);
     void agregarDestino();
+    void agregarServicio();
+    void quitarDestino();
+    void quitarServicio();
     void guardar();
 }

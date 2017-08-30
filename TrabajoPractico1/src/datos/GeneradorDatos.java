@@ -6,10 +6,14 @@
 package datos;
 
 import modelo.Ciudad;
+import modelo.EstadoPaquete;
 import modelo.Pais;
+import modelo.Paquete;
+import modelo.PasoFronterizo;
 import modelo.Provincia;
 import modelo.Rubro;
 import modelo.Servicio;
+import modelo.ServicioPaquete;
 
 import modelo.Tipo;
 
@@ -28,10 +32,21 @@ public final class GeneradorDatos {
         
         Rubro rubro1 = new Rubro("Transporte");
         Tipo tipo1 = new Tipo("Omnibus", rubro1);
-        Servicio servicio = new Servicio("Tansporte en omnibus", tipo1);
+        Servicio servicio1 = new Servicio("Tansporte en omnibus", tipo1);
         
-        AgenciaTurismo.agregarServicioPaquete(servicio);
+        AgenciaTurismo.agregarServicioPaquete(servicio1);
         
+        Paquete paquete1 = new Paquete("Paquete 1", "A metan transporte y hotel", "Transporte luego Hotel", "Ni ideas", 2 , 4);
+        paquete1.setOrigen(ciudad1);
+        paquete1.agregarCiudadDestino(ciudad1);
+        ServicioPaquete servicioPaquete1 = new ServicioPaquete(servicio1,1, 2);
+        paquete1.agregarServicio(servicioPaquete1);
+        
+        PasoFronterizo pasoFronterizo1= new PasoFronterizo("Paso Fronterizo de Arq", pais1);
+        paquete1.agregarPasoFronterizo(pasoFronterizo1); 
+        paquete1.setEstado(EstadoPaquete.Creado);
+        
+        AgenciaTurismo.agregarPaquete(paquete1);
     }
             
           

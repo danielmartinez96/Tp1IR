@@ -21,7 +21,7 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
      */
     public Inicio() {
         initComponents();
-        this.setControlador(new PresentadorInicio(this));
+        this.setPresentador(new PresentadorInicio(this));
          
         
     }
@@ -128,14 +128,14 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void MostrarCrearPaquete(ArrayList<Ciudad> ciudades) {
+    public void MostrarCrearPaquete() {
        AgregarPaquete vista = new AgregarPaquete(this,true);
 
     }
 
     @Override
     public void MostrarListarPaquete() {
-         ListarPaquetes vista= new ListarPaquetes(this, true);
+      ListarPaquetes vista= new ListarPaquetes(this, true);
     }
 
     @Override
@@ -149,7 +149,7 @@ public class Inicio extends javax.swing.JFrame implements IInicio{
     }
 
  
-    private void setControlador(PresentadorInicio c) {
+    private void setPresentador(PresentadorInicio c) {
         itemListarPaquete.addActionListener(c);
         itemListarPaquete.setActionCommand("LISTAR PAQUETE");
         itemNuevoPaquete.addActionListener(c);

@@ -21,11 +21,15 @@ public final class AgenciaTurismo {
     private static ArrayList<Servicio> SERVICIOS = new ArrayList<>();
             
             
-public static void agregarPaquete()
+public static void agregarPaquete(Paquete paquete)
 {
-    
+    PAQUETES.add(paquete);
 }
 
+public static ArrayList<Paquete> getPaquetes()
+{
+    return PAQUETES;
+}
 
 
 public static void agregarCiudad(Ciudad ciudad)

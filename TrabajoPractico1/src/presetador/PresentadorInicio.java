@@ -36,7 +36,7 @@ public class PresentadorInicio implements ActionListener {
             vista.MostrarListarPaquete();
             break;
             case "NUEVO PAQUETE":
-            vista.MostrarCrearPaquete(AgenciaTurismo.getCiudades());
+            vista.MostrarCrearPaquete();
             break;
             case "LISTAR SALIDA":
             vista.MostrarListarSalida();

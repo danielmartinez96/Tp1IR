@@ -18,22 +18,33 @@ import java.awt.event.ActionListener;
 public class PresentadorPaquete implements ActionListener {
     private IAgregarPaquete vistaAgregar;
     private IListarPaquetes vistaListar;
+    private Vista vista;
+    
+    public enum Vista{
+        AGREGAR,
+        LISTAR
+    }
     
     public PresentadorPaquete(IAgregarPaquete agregarPaquete) {
         this.vistaAgregar= agregarPaquete;
         vistaAgregar.configurar(AgenciaTurismo.getCiudades(),AgenciaTurismo.getServicios());
+        vista= Vista.AGREGAR;
     }
 
       public PresentadorPaquete(IListarPaquetes listarPaquetes) {
           this.vistaListar=listarPaquetes;
+          vistaListar.configurar(AgenciaTurismo.getPaquetes());
+          vista=Vista.LISTAR;
       }
 
     
     @Override
     public void actionPerformed(ActionEvent evento) {
      
+        
          String comando = evento.getActionCommand();
-         
+      // COMANDOS DE VISTA AGREGAR
+         if(vista==Vista.AGREGAR){
          switch(comando){
              case "GUARDAR PAQUETE":
              vistaAgregar.guardar();
@@ -41,8 +52,27 @@ public class PresentadorPaquete implements ActionListener {
              case "AGREGAR DESTINO":
              vistaAgregar.agregarDestino();
              break;    
-             
+             case "AGREGAR SERVICIO":
+             vistaAgregar.agregarServicio();
+             break;  
+             case "QUITAR DESTINO":
+             vistaAgregar.quitarDestino();
+             break;
+             case "QUITAR SERVICIO":
+             vistaAgregar.quitarServicio();
+            }   
          }
+         // COMANDOS DE VISTA LISTAR
+          if(vista==Vista.LISTAR){
+               switch(comando){
+                   
+                   
+                   
+                   
+               }
+
+          }
+         
          
     }
     
