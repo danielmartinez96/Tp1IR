@@ -64,4 +64,15 @@ public static ArrayList<Salida> getSalidas()
     return SALIDAS;
 }
 
+public static Ciudad buscarCiudad(String nombre)
+{
+    for (Ciudad ciudad : CIUDADES) {
+        
+        if(ciudad.getNombre()== nombre)
+           return ciudad; 
+    }
+    
+    return null;
+}
+
 }

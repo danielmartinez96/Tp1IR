@@ -7,9 +7,15 @@ package vista;
 
 import interfaces.IAgregarPaquete;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ciudad;
 import modelo.Servicio;
+import modelo.ServicioPaquete;
 import presetador.PresentadorInicio;
 import presetador.PresentadorPaquete;
 
@@ -36,18 +42,18 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
+        textNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        textDescripcion = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        textItinerario = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        textCondComercial = new javax.swing.JTextField();
         comboDias = new javax.swing.JComboBox<>();
         comboNoches = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
@@ -65,7 +71,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
         btnAgregarServicio = new javax.swing.JButton();
         btnQuitarServicio = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
+        btnGuardarPaquete = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         textDesde = new javax.swing.JTextField();
@@ -84,13 +90,13 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
 
         jLabel5.setText("Itinerario");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        textDescripcion.setColumns(20);
+        textDescripcion.setRows(5);
+        jScrollPane1.setViewportView(textDescripcion);
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane2.setViewportView(jTextArea2);
+        textItinerario.setColumns(20);
+        textItinerario.setRows(5);
+        jScrollPane2.setViewportView(textItinerario);
 
         jLabel6.setText("Condicion comercial:");
 
@@ -151,10 +157,10 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
 
         jLabel10.setText("Alta de Paquetes");
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+        btnGuardarPaquete.setText("Guardar");
+        btnGuardarPaquete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
+                btnGuardarPaqueteActionPerformed(evt);
             }
         });
 
@@ -188,7 +194,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(28, 28, 28)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
@@ -200,7 +206,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addGap(18, 18, 18)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(textCondComercial, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(21, 21, 21)
@@ -209,12 +215,12 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(comboNoches, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnGuardar)
-                                .addGap(36, 36, 36)
-                                .addComponent(jButton6))
+                                .addComponent(jButton6)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnGuardarPaquete))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
@@ -293,12 +299,12 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                         .addComponent(btnQuitarServicio)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnGuardar)
+                            .addComponent(btnGuardarPaquete)
                             .addComponent(jButton6)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -318,7 +324,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
                         .addGap(19, 19, 19)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(textCondComercial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -338,9 +344,9 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
         // TODO add your handling code here:
     }//GEN-LAST:event_btnQuitarServicioActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    private void btnGuardarPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPaqueteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_btnGuardarPaqueteActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
      dispose();
@@ -353,7 +359,7 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAgregarDestino;
     private javax.swing.JButton btnAgregarServicio;
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnGuardarPaquete;
     private javax.swing.JButton btnQuitarDestino;
     private javax.swing.JButton btnQuitarServicio;
     private javax.swing.JComboBox<Ciudad> comboCiudadDestino;
@@ -378,19 +384,19 @@ public class AgregarPaquete extends javax.swing.JDialog implements IAgregarPaque
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tablaDestino;
     private javax.swing.JTable tablaServicios;
+    private javax.swing.JTextField textCondComercial;
+    private javax.swing.JTextArea textDescripcion;
     private javax.swing.JTextField textDesde;
     private javax.swing.JTextField textHasta;
+    private javax.swing.JTextArea textItinerario;
+    private javax.swing.JTextField textNombre;
     // End of variables declaration//GEN-END:variables
 
 private void setPresentador(PresentadorPaquete c) {
-        btnGuardar.addActionListener(c);
-        btnGuardar.setActionCommand("GUARDAR PAQUETE");
+        btnGuardarPaquete.addActionListener(c);
+        btnGuardarPaquete.setActionCommand("GUARDAR PAQUETE");
         btnAgregarDestino.addActionListener(c);
         btnAgregarDestino.setActionCommand("AGREGAR DESTINO");
         btnAgregarServicio.addActionListener(c);
@@ -399,6 +405,7 @@ private void setPresentador(PresentadorPaquete c) {
         btnQuitarDestino.setActionCommand("QUITAR DESTINO");
         btnQuitarServicio.addActionListener(c);
         btnQuitarServicio.setActionCommand("QUITAR SERVICIO");
+       
           setVisible(true);
        
     }
@@ -407,7 +414,7 @@ private void setPresentador(PresentadorPaquete c) {
 
     @Override
     public void guardar() {
-      System.out.println("sadsas");
+        dispose();
     }
 
     @Override
@@ -482,5 +489,58 @@ private void setPresentador(PresentadorPaquete c) {
              tabla1.removeRow(tablaServicios.getSelectedRow()); 
          }
     }
+
+    @Override
+    public String getNombre() {
+        return textNombre.getText();
+    }
+
+    @Override
+    public int getDias() {
+        return (Integer) comboDias.getSelectedItem();
+    }
+
+    @Override
+    public int getNoches() {
+   return (Integer) comboNoches.getSelectedItem();
+    }
+
+    @Override
+    public String getDescripcion() {
+      return textDescripcion.getText();
+    }
+
+    @Override
+    public String getItinerario() {
+        return textItinerario.getText();
+        
+    }
+
+    @Override
+    public String getCondicionComercial() {
+        return textCondComercial.getText();
+    }
+
+    @Override
+    public Ciudad getCiudadOrigen() {
+        return (Ciudad)comboCiudadOrigen.getSelectedItem();
+    }
+
+    @Override
+    public ArrayList<String> getCiudadesDestino() {
+        ArrayList<String> ciudades= new ArrayList<>();
+        for (int i = 0; i < tablaDestino.getRowCount(); i++) {
+            ciudades.add(String.valueOf(tablaDestino.getValueAt(i, 0)));
+        }
+       
+    return ciudades;
+    }
+
+    @Override
+    public ArrayList<ServicioPaquete> getServicioPaquete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
     
 }

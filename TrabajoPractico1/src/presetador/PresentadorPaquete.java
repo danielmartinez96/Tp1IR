@@ -10,6 +10,9 @@ import interfaces.IAgregarPaquete;
 import interfaces.IListarPaquetes;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import modelo.Ciudad;
+
+import modelo.Paquete;
 
 /**
  *
@@ -47,6 +50,15 @@ public class PresentadorPaquete implements ActionListener {
          if(vista==Vista.AGREGAR){
          switch(comando){
              case "GUARDAR PAQUETE":
+             Paquete paquete = new Paquete(vistaAgregar.getNombre(), vistaAgregar.getDescripcion(), vistaAgregar.getItinerario(), vistaAgregar.getCondicionComercial(), vistaAgregar.getDias(), vistaAgregar.getNoches());
+             paquete.setOrigen(vistaAgregar.getCiudadOrigen());
+             for(String nombre : vistaAgregar.getCiudadesDestino() )
+             {
+                 paquete.agregarCiudadDestino(AgenciaTurismo.buscarCiudad(nombre));
+             }
+                     
+             AgenciaTurismo.agregarPaquete(paquete);
+                 
              vistaAgregar.guardar();
              break;
              case "AGREGAR DESTINO":
@@ -60,6 +72,8 @@ public class PresentadorPaquete implements ActionListener {
              break;
              case "QUITAR SERVICIO":
              vistaAgregar.quitarServicio();
+             break;
+             
             }   
          }
          // COMANDOS DE VISTA LISTAR

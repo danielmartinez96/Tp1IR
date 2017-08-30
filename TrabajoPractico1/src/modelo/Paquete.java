@@ -42,8 +42,8 @@ public class Paquete {
         this.destinos = new ArrayList<>();
         this.serviciosPaquete = new ArrayList<>();
         this.pasosFronterizos = new ArrayList<>();
+        estado= EstadoPaquete.Creado;
     }
-
    
     
     public ArrayList<PasoFronterizo> getPasosFronterizos() {

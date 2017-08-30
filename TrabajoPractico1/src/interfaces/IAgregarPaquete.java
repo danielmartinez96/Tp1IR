@@ -8,6 +8,7 @@ package interfaces;
 import java.util.ArrayList;
 import modelo.Ciudad;
 import modelo.Servicio;
+import modelo.ServicioPaquete;
 
 /**
  *
@@ -21,4 +22,16 @@ public interface IAgregarPaquete {
     void quitarDestino();
     void quitarServicio();
     void guardar();
+    //--------------------
+    String getNombre();
+    int getDias();
+    int getNoches();
+    String getDescripcion();
+    String getItinerario();
+    String getCondicionComercial();
+    Ciudad getCiudadOrigen();
+    ArrayList<String> getCiudadesDestino();
+    ArrayList<ServicioPaquete> getServicioPaquete();
+            
+    
 }
